@@ -13,19 +13,25 @@
     </style>
   </head>
   <body>
-    <a href="index.php">Tambah Lokasi</a> | <a href="list_map.php">Lokasi Tersimpan</a>
+    <a href="index.php">Tambah Lokasi</a> | <a href="list_map.php">Lokasi Tersimpan</a><br>
+    <div style="margin-top:25px;">
+        <input type="text" id="nama_lokasi" name="nama_lokasi" placeholder="Cari lokasi"><button onclick="cari()">Cari</button>
+    </div>
     <div id="map"></div>
     <form action="inc/tambah_lokasi.php" method="post">
-    	<input type="text" name="nama_lokasi" placeholder="Nama Lokasi"><br>
-    	<input type="text" id="lat" name="lat" placeholder="Lat"> <br>
-   	 	<input type="text" id="lng" name="lng" placeholder="Lang"> <br>	
+    	<input type="text" name="nama_lokasi" placeholder="Nama Lokasi" required><br>
+    	<input type="text" id="lat" name="lat" placeholder="Lat" required> <br>
+   	 	<input type="text" id="lng" name="lng" placeholder="Lang" required> <br>	
    	 	<button type="submit">Tambah lokasi</button>
     </form>
     <script>
 
 var map;
 var marker;
-
+function cari(){
+  console.log('list_map.php?nama_lokasi=' + encodeURIComponent(document.getElementById('nama_lokasi').value));
+  window.location = 'http://localhost/map/list_map.php?nama_lokasi=' + encodeURIComponent(document.getElementById('nama_lokasi').value,);
+}
 function placeMarker(location) {
     if (marker) {
         marker.setPosition(location);
@@ -33,7 +39,7 @@ function placeMarker(location) {
         marker = new google.maps.Marker({          
             position: location,
             map: map,
-            title: 'Your position'
+            title: 'Posisi anda'
         });
     }
 }
@@ -47,7 +53,6 @@ function initMap() {
 
     google.maps.event.addListener(map, 'click', function (evt) {
         placeMarker(evt.latLng);
-        console.log(evt.latLng.lat() + ' ' +  evt.latLng.lng());
         document.getElementById('lat').value = evt.latLng.lat();
         document.getElementById('lng').value = evt.latLng.lng();
     });
