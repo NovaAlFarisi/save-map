@@ -1,1 +1,1 @@
-Simple get map position by click event
+Simple get map position by click event, search saved map.
