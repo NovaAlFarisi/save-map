@@ -80,6 +80,6 @@ require_once('inc/get_list.php');
 
 
 </script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4ihGVL6SmggKxvTYeO4oyQBTjxCYg6cA&callback=initMap"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
 </body>
 </html>
